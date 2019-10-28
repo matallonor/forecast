@@ -1,1 +1,16 @@
 .DS_Store
+
+# Git files
+.git
+.gitignore
+
+# README
+README.md
+
+# IDE config files
+.idea
+
+# Docker files
+/docker
+docker-compose.dev.yml
+docker-compose.prod.yml
