@@ -3,6 +3,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { TranslateModule } from '@ngx-translate/core';
+import { WeatherService } from 'src/app/shared/services/weather.service';
+import { WeatherRepository } from 'src/app/shared/repositories/weather.repository';
 
 @NgModule({
   imports: [
@@ -24,7 +26,10 @@ export class SharedModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
-      providers: []
+      providers: [
+        WeatherService,
+        WeatherRepository
+      ]
     };
   }
 }
