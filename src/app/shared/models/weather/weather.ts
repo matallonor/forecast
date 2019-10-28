@@ -4,6 +4,7 @@ import { WeatherInfo } from './weather-info';
 export class Weather {
   title: string;
   main: WeatherInfo;
+  icon: string;
   dt: number;
   name: string;
 
@@ -12,6 +13,7 @@ export class Weather {
       return null;
     }
     this.title = json.weather.main;
+    this.icon = json.weather.icon;
     this.main = json.main;
     this.dt = json.dt;
     this.name = json.name;
