@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "node_modules/bootstrap/scss/bootstrap";
+$fa-font-path: "node_modules/font-awesome/fonts";
+@import "node_modules/font-awesome/scss/font-awesome.scss";
+
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+
+$main-color: rgba(255, 94, 0, 0.7);;
+
+$font-family: 'Josefin Sans', sans-serif;
+$large-font: 50px;
+$medium-font: 30px;
+
+html {
+  background-color: white;
+  font-family: $font-family;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

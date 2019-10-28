@@ -1,7 +1,9 @@
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class WeatherRepository {
 
   weatherApiUrl = `${environment.apiUrl}`;
@@ -9,13 +11,8 @@ export class WeatherRepository {
 
   constructor(private http: HttpClient) {}
 
-  get headers(): HttpHeaders {
-    return new HttpHeaders({ 'Content-Type': 'application/json' });
-  }
-
   public getCityWeather(city: string): Observable<any> {
-    const options = { headers: this.headers };
     const url = `${this.weatherApiUrl}?q=${city}&APPID=${this.appId}`;
-    return this.http.get<any>(url, options);
+    return this.http.get<any>(url);
   }
 }

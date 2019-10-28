@@ -12,8 +12,8 @@ export class Weather {
     if ( json === undefined || json === null || Object.keys(json).length === 0 ) {
       return null;
     }
-    this.title = json.weather.main;
-    this.icon = json.weather.icon;
+    this.title = json.weather[0].main;
+    this.icon = json.weather[0].icon;
     this.main = json.main;
     this.dt = json.dt;
     this.name = json.name;

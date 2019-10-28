@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="city-form col-12 col-lg-6">
+      <div class="title span-center">Weather app</div>
+      <form class="form">
+        <input placeholder="City" name="city" [(ngModel)]="city" matSuffix>
+        <i class="material-icons search" (click)="search()">search</i>
+      </form>
+    </div>
+
+    <div class="weather-info col-12 col-lg-6">
+      <div class="row">
+        <span class="city-name">{{ weather?.name }}</span>
+      </div>
+      <div class="row weather">
+        <span class="desc">{{ weather?.title }}</span>
+      </div>
+      <div class="row weather">
+        <i class="icon fa fa-tint" aria-hidden="true"> </i>
+        <p class="w-info">{{ weather?.main.humidity }} %</p>
+      </div>
+      <div class="row weather">
+        <i class="icon fa fa-thermometer-empty" aria-hidden="true"> </i>
+        <p class="w-info">{{ weather?.main.temp }} º</p>
+      </div>
+    </div>
+  </div>
+</div>

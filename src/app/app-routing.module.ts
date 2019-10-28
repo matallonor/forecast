@@ -5,10 +5,17 @@ import { P404Component } from './shared/error-pages';
 
 
 const routes: Routes = [
+  { path: '', redirectTo: 'weather', pathMatch: 'full', },
   {
     path: '',
     component: FullLayoutComponent,
-    data: { title: '' }
+    data: { title: '' },
+    children: [
+      {
+        path: 'weather',
+        loadChildren: './modules/weather/weather.module#WeatherModule',
+      },
+    ]
   },
   { path: '**', component: P404Component },
 ];

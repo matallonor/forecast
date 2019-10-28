@@ -1,7 +1,5 @@
 export const environment = {
   production: false,
-  apiUrl: 'http:www.api.openweathermap.org',
-  iconUrlPrefix: '/img/wn/',
-  iconUrlSuffix: '@2x.png',
+  apiUrl: 'https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather',
   appId: 'cbb081eaab1bd679a9780f3d7690d00d'
 };
