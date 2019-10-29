@@ -12,7 +12,7 @@ describe('WeatherService', () => {
 
   beforeAll( () => {
     mockWeather = {
-      weather : { main: 'Rain' },
+      weather : [ { main: 'Rain' } ],
       main : {
         temp : 280.32,
         pressure : 1012,
@@ -37,7 +37,7 @@ describe('WeatherService', () => {
     service.getCityWeather('london').subscribe({
       next: (weather: Weather) => {
         expect(weather).toBeTruthy();
-        expect(weather.title).toBe(mockWeather.weather.main);
+        expect(weather.title).toBe(mockWeather.weather[0].main);
         expect(weather.main).toBe(mockWeather.main);
         expect(weather.dt).toBe(mockWeather.dt);
         expect(weather.name).toBe(mockWeather.name);
