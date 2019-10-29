@@ -1,38 +1,42 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { WeatherService } from 'src/app/shared/services/weather.service';
 import { Weather } from 'src/app/shared/models/weather/weather';
+import { LoaderService } from 'src/app/shared/services';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-weather-detail',
   templateUrl: './weather-detail.component.html',
   styleUrls: ['./weather-detail.component.scss']
 })
-export class WeatherDetailComponent implements OnInit {
+export class WeatherDetailComponent implements OnInit, OnDestroy {
 
-  private iconUrl: string;
   private city: string;
   private weather: Weather;
-  private breakpoint: number;
+  private subscription: Subscription;
 
-  constructor(private weatherService: WeatherService) {
+  constructor(
+    private weatherService: WeatherService,
+    private loader: LoaderService
+  ) {
     this.city = 'Berlin';
   }
 
   ngOnInit() {
-    this.breakpoint = (window.innerWidth >= 800) ? 1 : 6;
     this.search();
   }
 
-  @HostListener('window:resize', ['$event'])
-  onResize(event) {
-    this.breakpoint = (event.target.innerWidth >= 800) ? 1 : 6;
-  }
-
   search() {
-    this.weatherService.getCityWeather(this.city).subscribe(
+    this.loader.show('Loading');
+    this.subscription = this.weatherService.getCityWeather(this.city).subscribe(
       weather => {
         this.weather = weather;
+        this.loader.hide();
       }
     );
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }
